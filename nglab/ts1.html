@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/models/Employee.js"></script>
+    <script src="Scripts/ctrls/ts1.js"></script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="mainctrl as ctrl">
+        <input type="text" ng-model="ctrl.emp.No" />
+        <input type="text" ng-model="ctrl.emp.Name" />
+        <br />
+        <span ng-bind="ctrl.emp.GetNoName()"></span>
+        <br />
+        <span>{{ model.fullName() }}</span>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="MyJS/route5.js"></script>
+</head>
+<body ng-app="myapp">
+    
+    <div ng-view></div>
+
+    <script>
+
+        var app = angular.module('myapp');
+
+        app.config(['$routeProvider', function ($routeProvider) {
+            $routeProvider.when('/', {
+                templateUrl: 'route51.html',
+                controller: 'listctrl as ctrl'
+            }).when('/route5/:no', {
+                templateUrl: 'route52.html',
+                controller: 'detailctrl as empctrl'
+            }).otherwise({
+                redirectTo: '/'
+            });
+        }]);
+
+    </script>
+</body>
+</html>

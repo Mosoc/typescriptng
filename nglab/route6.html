@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <h3>route - resolve</h3>
+    <div ng-view></div>
+
+    <script>
+
+        var app = angular.module('myapp', ['ngRoute']);
+
+        app.config(['$routeProvider', function ($routeProvider) {
+            $routeProvider.when('/', {
+                templateUrl: 'route61.html',
+                controller: 'mainctrl as ctrl',
+                resolve: {
+                    showname: ['$q', '$timeout', function ($q, $timeout) {
+                        var deferred = $q.defer();
+                        $timeout(function () {
+                            deferred.resolve('route resolve sample');
+                        }, 4000);
+                        return deferred.promise;
+                    }]
+                }
+            }).otherwise({
+                redirectTo: '/'
+            });
+        }]);
+
+        app.controller('mainctrl', ['showname', function (showname) {
+            var self = this;
+            self.name = showname;
+        }]);
+    </script>
+</body>
+</html>
